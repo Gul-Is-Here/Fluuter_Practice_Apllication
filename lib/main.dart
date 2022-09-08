@@ -4,5 +4,9 @@ void main(){
   runApp(const MaterialApp(
     title: 'Flutter App',
     home:LoginPage() ,
+    routes: {
+      
+    },
+    
   ));
 }

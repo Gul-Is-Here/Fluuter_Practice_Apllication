@@ -1,5 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+
+import 'img.dart';
  class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
    final fNameTextField= TextFormField(
-      autofocus: false,
+      autofocus: true,
       controller: nameController,
       keyboardType: TextInputType.name,
       onSaved: (newValue)  {
@@ -22,16 +24,20 @@ class _LoginPageState extends State<LoginPage> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
+        
         prefixIcon: const Icon(Icons.person),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: 'First Name',
+        labelText: 'Name',hintStyle:const TextStyle(backgroundColor: Colors.white12),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
     final passwordField= TextFormField(
-      autofocus: true,
+      
+      autofocus: false,
       controller: passwordController,
       decoration:  InputDecoration(hintText: 'Password',
+      labelText: 'Password',
       prefixIcon: const Icon(Icons.password),
       contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
       border:  OutlineInputBorder(borderRadius: BorderRadius.circular(10))
@@ -39,29 +45,28 @@ class _LoginPageState extends State<LoginPage> {
     );
     final loginButton = Material(
   elevation: 5,
+  color: Colors.amber,
   borderRadius: BorderRadius.circular(10),
-  child: const MaterialButton(onPressed: null,
-  child: Text('Sign in',style:
+  child: MaterialButton(onPressed: (){
+
+  },
+  child: const Text('Sign in',style:
  TextStyle(color: Colors.black, fontWeight: FontWeight.bold,),textAlign: TextAlign.center, ),));
     
     
-    return Scaffold( appBar: AppBar(title: Text('My App'),
+    return Scaffold( appBar: AppBar(title: const Text('My App'),
     ),
     
     body:Stack(
       fit: StackFit.expand,
-      children: [
-        Image.asset('assets/images/laptop.png', fit: BoxFit.cover, color: Colors.black.withOpacity(0.3),colorBlendMode: BlendMode.darken,),
-        SingleChildScrollView(
-
-          child: Align(
-            alignment: Alignment.center,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height/2,
-              padding: EdgeInsets.all(10),
-              
-              child: Card(
+      children: <Widget>[
+        Img(),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(children: [
                   fNameTextField,
                  const SizedBox(height:20),
@@ -80,3 +85,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
