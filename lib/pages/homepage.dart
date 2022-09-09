@@ -26,7 +26,6 @@ var data;
   getData() async{
    var res = await http.get(Uri.parse(url));
    data= jsonDecode(res.body);
-   print(data);
   }
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
