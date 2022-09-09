@@ -1,6 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-
+import '../utils/constants.dart';
 import 'img.dart';
  class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -48,7 +48,10 @@ class _LoginPageState extends State<LoginPage> {
   color: Colors.amber,
   borderRadius: BorderRadius.circular(10),
   child: MaterialButton(onPressed: (){
-
+    // Navigator.push(context, MaterialPageRoute(builder:
+    //  (context)=>const HomePage()) );
+    Constants.prefs.setBool('loggedIn', true);
+    Navigator.pushReplacementNamed(context, "/login");
   },
   child: const Text('Sign in',style:
  TextStyle(color: Colors.black, fontWeight: FontWeight.bold,),textAlign: TextAlign.center, ),));
@@ -60,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
     body:Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        Img(),
+        const Img(),
         Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
